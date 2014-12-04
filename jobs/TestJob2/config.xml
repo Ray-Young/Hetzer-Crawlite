@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<CrawlJob name="TestJob2" class="com.hetzer.crawlite.job.CrawlJob">
+  <ThreadNum name="ThreadNum">4</ThreadNum>
+  <RetryTimes name="ThreadNum">3</RetryTimes>
+  <Processor>
+    <ProcessorObject name="MockProcessor" class="com.hetzer.crawlite.mock.MockProcessor"/>
+    <ProcessorObject name="HTMLFetcher" class="com.hetzer.crawlite.processers.HTMLFetcher"/>
+    <ProcessorObject name="HTMLWriter" class="com.hetzer.crawlite.processers.HTMLWriter"/>
+    <ProcessorObject name="ImageFetcher" class="com.hetzer.crawlite.processers.ImageFetcher"/>
+    <ProcessorObject name="ImageWriter" class="com.hetzer.crawlite.processers.ImageWriter"/>
+    <ProcessorObject name="HTMLExtractor" class="com.hetzer.crawlite.processers.HTMLExtractor"/>
+    <ProcessorObject name="IMGExtractor" class="com.hetzer.crawlite.processers.IMGExtractor"/>
+  </Processor>
+</CrawlJob>
