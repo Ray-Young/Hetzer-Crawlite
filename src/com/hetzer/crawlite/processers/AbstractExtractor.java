@@ -1,7 +1,5 @@
 package com.hetzer.crawlite.processers;
 
-import java.io.File;
-
 import com.hetzer.crawlite.datamodel.CrawlableURL;
 import com.hetzer.crawlite.framework.Processor;
 import com.hetzer.crawlite.job.CrawlJob;

@@ -1,10 +1,8 @@
 package com.hetzer.crawlite.job;
 
 import java.io.File;
-import java.util.Random;
 
 import com.hetzer.crawlite.CrawlJobManager;
-import com.hetzer.crawlite.datamodel.CrawlableURL;
 import com.hetzer.crawlite.exception.OverFlowException;
 import com.hetzer.crawlite.framework.CThread;
 import com.hetzer.crawlite.framework.ProcesserChain;
@@ -12,9 +10,6 @@ import com.hetzer.crawlite.framework.Processor;
 import com.hetzer.crawlite.framework.UrlProvider;
 import com.hetzer.crawlite.framework.urlProvider.H2UrlProvider;
 import com.hetzer.crawlite.mock.MockProcesserChain;
-import com.hetzer.crawlite.mock.MockProcessor;
-import com.hetzer.crawlite.mock.MockURLChain;
-import com.hetzer.crawlite.thread.GxyCThread;
 
 public class CrawlJob {
 	private CrawlJobManager crawlJobManager;
@@ -66,7 +61,7 @@ public class CrawlJob {
 
 	public void setSeeds(String[] seeds) {
 		for (String seed : seeds) {
-			urlProvider.add(CrawlJobManager.makeUrlObject(seed), this,0);
+			urlProvider.add(CrawlJobManager.makeUrlObject(seed), this, 0);
 		}
 	}
 

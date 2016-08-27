@@ -1,10 +1,5 @@
 package com.hetzer.crawlite.datamodel;
 
-import java.net.URL;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
-
 public interface CrawlableURL {
 
 	public static final String WEB_SOURCE = "WEBSOURCE";

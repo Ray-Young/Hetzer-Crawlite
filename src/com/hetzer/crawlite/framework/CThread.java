@@ -6,9 +6,9 @@ public interface CThread {
 	public enum thread_state {
 		waiting, working
 	}
-	
+
 	public void insert(CrawlJob crawlJob);
-	
+
 	public void jobStart();
 
 	public void jobFinish();
@@ -20,9 +20,9 @@ public interface CThread {
 	public thread_state getMyState();
 
 	public String getTaskName();
-	
-    public boolean getAbandon();
-	
+
+	public boolean getAbandon();
+
 	public void jobRecycle();
 
 	public boolean getRunTime();

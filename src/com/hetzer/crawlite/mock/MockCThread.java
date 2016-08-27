@@ -1,7 +1,6 @@
 package com.hetzer.crawlite.mock;
 
 import java.util.Iterator;
-import java.util.Random;
 
 import com.hetzer.crawlite.datamodel.CrawlableURL;
 import com.hetzer.crawlite.framework.CThread;
@@ -29,8 +28,7 @@ public class MockCThread implements CThread {
 						if (current.getURL() == null) {
 							break a;
 						}
-						System.out.println(current.getURL()
-								+ crawlJob.getName());
+						System.out.println(current.getURL() + crawlJob.getName());
 
 						process();
 

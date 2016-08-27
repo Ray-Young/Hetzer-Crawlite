@@ -11,11 +11,11 @@ public class Crawlite {
 	public static final String PROPERTIES_FILE = "crawlite.properties";
 	private Properties properties;
 	public static Crawlite crawlite = new Crawlite(CrawlJobManager.instance());
-	
-	public static Crawlite instance(){
+
+	public static Crawlite instance() {
 		return crawlite;
 	}
-	
+
 	private Crawlite(CrawlJobManager jobManager) {
 		this.jobManager = jobManager;
 	}
@@ -28,7 +28,7 @@ public class Crawlite {
 		// XXX for test
 
 	}
-	
+
 	public Properties getProperties() {
 		return properties;
 	}
@@ -51,7 +51,7 @@ public class Crawlite {
 	 * launch the web. Initialize manager.
 	 */
 	public void launch() {
-		System.out.println("crewliteÆô¶¯£¨ÈÎÎñ¹ÜÀíÆ÷Æô¶¯£¬ÍøÒ³Æô¶¯£©");
+		System.out.println("crewliteï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 		jobManager.initialize(properties);
 	}
 }

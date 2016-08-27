@@ -12,6 +12,7 @@ import com.hetzer.crawlite.framework.Processor;
 public class MockProcesserChain implements ProcesserChain {
 	ArrayList<Processor> list = new ArrayList<Processor>();
 	Iterator<Processor> iterator = list.iterator();
+
 	@Override
 	public int size() {
 		return list.size();
@@ -80,7 +81,7 @@ public class MockProcesserChain implements ProcesserChain {
 
 	@Override
 	public void clear() {
-list.clear();
+		list.clear();
 	}
 
 	@Override
@@ -97,7 +98,7 @@ list.clear();
 
 	@Override
 	public void add(int index, Processor element) {
-list.add(index, element);
+		list.add(index, element);
 	}
 
 	@Override

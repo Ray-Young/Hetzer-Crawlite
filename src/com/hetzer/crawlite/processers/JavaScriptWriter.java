@@ -2,7 +2,6 @@ package com.hetzer.crawlite.processers;
 
 import java.io.File;
 import java.io.FileWriter;
-import java.util.Map;
 
 import com.hetzer.crawlite.datamodel.CrawlableURL;
 
@@ -24,7 +23,7 @@ public class JavaScriptWriter extends AbstractWriter {
 				System.out.println("Javascript Write Fail");
 			}
 		}
-		
+
 		return true;
 	}
 

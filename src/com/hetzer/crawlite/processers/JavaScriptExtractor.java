@@ -23,14 +23,11 @@ public class JavaScriptExtractor extends AbstractExtractor {
 				String temp = m_js.group(1);
 				if (temp.matches("/.*?")) {
 					temp = source.getURL() + temp;
-					crawlJob.getUrlProvider().add(
-							CrawlJobManager.makeUrlObject(temp), crawlJob,
-							source.getDepth());
+					crawlJob.getUrlProvider().add(CrawlJobManager.makeUrlObject(temp), crawlJob, source.getDepth());
 					i_js++;
 				} else {
-					crawlJob.getUrlProvider().add(
-							CrawlJobManager.makeUrlObject(m_js.group(1)),
-							crawlJob, source.getDepth());
+					crawlJob.getUrlProvider().add(CrawlJobManager.makeUrlObject(m_js.group(1)), crawlJob,
+							source.getDepth());
 					i_js++;
 				}
 			}

@@ -25,13 +25,13 @@ public class MockCThreadPool implements CThreadPool {
 
 	@Override
 	public void initialize(int max) {
-		System.out.println("mock init:"+ max);
+		System.out.println("mock init:" + max);
 	}
 
 	@Override
 	public CThread[] apply(int num) {
 		System.out.println("apply");
-		return new CThread[]{new MockCThread(),new MockCThread()};
+		return new CThread[] { new MockCThread(), new MockCThread() };
 	}
 
 }

@@ -12,7 +12,7 @@ public class IMGExtractor extends AbstractExtractor {
 		String webSource = source.getString(CrawlableURL.WEB_SOURCE);
 		if (webSource != null) {
 			int i_img = 0;
-			String regular_img = User_Regular_IMG.Regular_Fun(); // Regular_FunÎª¾²Ì¬º¯Êý
+			String regular_img = User_Regular_IMG.Regular_Fun(); // Regular_FunÎªï¿½ï¿½Ì¬ï¿½ï¿½ï¿½ï¿½
 			Pattern p_img;
 			Matcher m_img;
 			p_img = Pattern.compile(regular_img);
@@ -24,15 +24,12 @@ public class IMGExtractor extends AbstractExtractor {
 					temp = source.getURL() + temp;
 					CrawlableURL object = CrawlJobManager.makeUrlObject(temp);
 					object.setDepth(source.getDepth() + 1);
-					crawlJob.getUrlProvider().add(object, crawlJob,
-							object.getDepth());
+					crawlJob.getUrlProvider().add(object, crawlJob, object.getDepth());
 				} else {
 
-					CrawlableURL object = CrawlJobManager.makeUrlObject(m_img
-							.group(1));
-					object.setDepth(source.getDepth() -1);
-					crawlJob.getUrlProvider().add(object, crawlJob,
-							object.getDepth());
+					CrawlableURL object = CrawlJobManager.makeUrlObject(m_img.group(1));
+					object.setDepth(source.getDepth() - 1);
+					crawlJob.getUrlProvider().add(object, crawlJob, object.getDepth());
 				}
 			}
 

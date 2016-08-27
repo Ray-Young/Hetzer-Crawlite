@@ -2,8 +2,6 @@ package com.hetzer.crawlite.processers;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
-import java.util.Map;
 
 import com.hetzer.crawlite.datamodel.CrawlableURL;
 
@@ -19,12 +17,11 @@ public class ImageWriter extends AbstractWriter {
 					File d = new File(file, name);
 					d.mkdir();
 					File storeFile = new File(d, name + ".jpg");
-					FileOutputStream fileOutputStream = new FileOutputStream(
-							storeFile);
+					FileOutputStream fileOutputStream = new FileOutputStream(storeFile);
 					fileOutputStream.write(source.getBytes(CrawlableURL.IMG));
 					fileOutputStream.close();
 				} else {
-					System.out.println("Í¼Æ¬ ÏÂÔØÊ§°Ü£¬Ìø¹ý");
+					System.out.println("Í¼Æ¬ ï¿½ï¿½ï¿½ï¿½Ê§ï¿½Ü£ï¿½ï¿½ï¿½ï¿½ï¿½");
 				}
 				System.out.println("IMG Download Successfully, ");
 

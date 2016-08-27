@@ -44,22 +44,22 @@ public class CrawlJobManager {
 	private String jobPath;
 	private static CrawlJobManager crawlJobManager = new CrawlJobManager();
 	private static Constructor<? extends CrawlableURL> constructor;
-	
+
 	private CrawlJobManager() {
-		this(new HashMap<String, CrawlJob>(),Resource.class);
+		this(new HashMap<String, CrawlJob>(), Resource.class);
 	}
-	
+
 	public static CrawlableURL makeUrlObject(String url) {
 		try {
 			return constructor.newInstance(url);
-		} catch (InstantiationException | IllegalAccessException
-				| IllegalArgumentException | InvocationTargetException e) {
+		} catch (InstantiationException | IllegalAccessException | IllegalArgumentException
+				| InvocationTargetException e) {
 			e.printStackTrace();
 		}
 		return null;
 	}
 
-	private CrawlJobManager(Map<String, CrawlJob> jobMap,Class<? extends CrawlableURL> rClazz) {
+	private CrawlJobManager(Map<String, CrawlJob> jobMap, Class<? extends CrawlableURL> rClazz) {
 		this.jobMap = jobMap;
 		try {
 			constructor = rClazz.getConstructor(String.class);
@@ -91,25 +91,25 @@ public class CrawlJobManager {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("name", name);
 		map.put("ThreadNum", 4);
-		
+
 		map.put("RetryTimes", 3);
 		List<Class<? extends Processor>> list = new ArrayList<Class<? extends Processor>>();
 		list.add(MockProcessor.class);
 		list.add(HTMLFetcher.class);
 		list.add(HTMLWriter.class);
-		
+
 		list.add(ImageFetcher.class);
 		list.add(ImageWriter.class);
-		
-		//list.add(CSSFetcher.class);
-		//list.add(CSSWriter.class);
-		
-		//list.add(JavaScriptFetcher.class);
-		//list.add(JavaScriptWriter.class);
-		
+
+		// list.add(CSSFetcher.class);
+		// list.add(CSSWriter.class);
+
+		// list.add(JavaScriptFetcher.class);
+		// list.add(JavaScriptWriter.class);
+
 		list.add(HTMLExtractor.class);
-		//list.add(CSSExtractr.class);
-		//list.add(JavaScriptExtractor.class);
+		// list.add(CSSExtractr.class);
+		// list.add(JavaScriptExtractor.class);
 		list.add(IMGExtractor.class);
 		map.put("processorList", list);
 		CrawlJob job = makeNewJob(map);

@@ -13,12 +13,11 @@ public class JavaScriptFetcher extends AbstractFetcher {
 		if (source.getURL().matches(".*?js")) {
 			try {
 				URL url_js = new URL(source.getURL());
-				BufferedReader br_js = new BufferedReader(
-						new InputStreamReader(url_js.openStream()));
+				BufferedReader br_js = new BufferedReader(new InputStreamReader(url_js.openStream()));
 				String s_js = "";
 				StringBuffer sb_js = new StringBuffer("");
 				while ((s_js = br_js.readLine()) != null) {
-					sb_js.append(s_js); // ±£Ö¤ÆäÍùÏÂÒ»ÐÐ¶Á
+					sb_js.append(s_js); // ï¿½ï¿½Ö¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½Ð¶ï¿½
 				}
 				br_js.close();
 				source.putBoolean(CrawlableURL.JS, true);
@@ -28,8 +27,7 @@ public class JavaScriptFetcher extends AbstractFetcher {
 				System.out.println("Javascript Write Fail");
 				source.putBoolean(CrawlableURL.JS, false);
 			}
-		}
-		else {
+		} else {
 			source.putBoolean(CrawlableURL.JS, false);
 		}
 	}

@@ -22,14 +22,11 @@ public class CSSExtractr extends AbstractExtractor {
 					temp = source.getURL() + temp;
 					CrawlableURL object = CrawlJobManager.makeUrlObject(temp);
 					object.setDepth(source.getDepth() + 1);
-					crawlJob.getUrlProvider().add(object, crawlJob,
-							object.getDepth());
+					crawlJob.getUrlProvider().add(object, crawlJob, object.getDepth());
 				} else {
-					CrawlableURL object = CrawlJobManager.makeUrlObject(m_css
-							.group(1));
+					CrawlableURL object = CrawlJobManager.makeUrlObject(m_css.group(1));
 					object.setDepth(source.getDepth() + 1);
-					crawlJob.getUrlProvider().add(object, crawlJob,
-							object.getDepth());
+					crawlJob.getUrlProvider().add(object, crawlJob, object.getDepth());
 				}
 			}
 

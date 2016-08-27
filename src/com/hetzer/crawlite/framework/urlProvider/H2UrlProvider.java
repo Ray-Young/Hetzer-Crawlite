@@ -6,11 +6,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
-import java.util.Random;
 
 import org.h2.tools.Server;
 
@@ -28,7 +23,6 @@ public class H2UrlProvider implements UrlProvider {
 	private String password = "123456";
 	private Connection connection;
 	private boolean hasNext = true;
-	private boolean is;
 	private static H2UrlProvider provider = new H2UrlProvider();
 
 	private H2UrlProvider() {
@@ -41,14 +35,13 @@ public class H2UrlProvider implements UrlProvider {
 
 	public void startServer() {
 		try {
-			server = Server.createTcpServer(new String[] { "-tcpPort", port })
-					.start();
+			server = Server.createTcpServer(new String[] { "-tcpPort", port }).start();
 			Class.forName("org.h2.Driver");
-			connection = DriverManager.getConnection("jdbc:h2:mem:" + dbDir,
-					user, password);
+			connection = DriverManager.getConnection("jdbc:h2:mem:" + dbDir, user, password);
 			Statement stat = connection.createStatement();
 			stat.execute("DROP TABLE IF EXISTS TEST");
-			stat.execute("CREATE TABLE TEST(URL VARCHAR(66535),ISDONE BOOLEAN,JOB VARCHAR(255),PIRORITY INTEGER,PRIMARY KEY(JOB,URL))");
+			stat.execute(
+					"CREATE TABLE TEST(URL VARCHAR(66535),ISDONE BOOLEAN,JOB VARCHAR(255),PIRORITY INTEGER,PRIMARY KEY(JOB,URL))");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
@@ -69,6 +62,7 @@ public class H2UrlProvider implements UrlProvider {
 	}
 
 	public static int i = 0;
+
 	@Override
 	public synchronized CrawlableURL next(CrawlJob job) {
 		PreparedStatement statement1;
@@ -78,17 +72,15 @@ public class H2UrlProvider implements UrlProvider {
 		String url = null;
 		int depth = 0;
 		try {
-			statement1 = connection
-					.prepareStatement("select URL,PIRORITY from TEST where ISDONE = false "
-							+ "and JOB = ? order by PIRORITY asc limit 1");
+			statement1 = connection.prepareStatement("select URL,PIRORITY from TEST where ISDONE = false "
+					+ "and JOB = ? order by PIRORITY asc limit 1");
 			statement1.setString(1, job.getName());
 			result = statement1.executeQuery();
 
 			if (result.next()) {
 				url = result.getString("URL");
 				depth = result.getInt("PIRORITY");
-				statement2 = connection
-						.prepareStatement("update TEST SET ISDONE = 1 WHERE URL = ? and JOB = ?");
+				statement2 = connection.prepareStatement("update TEST SET ISDONE = 1 WHERE URL = ? and JOB = ?");
 				statement2.setString(1, url);
 				statement2.setString(2, job.getName());
 				int r = statement2.executeUpdate();
@@ -118,8 +110,10 @@ public class H2UrlProvider implements UrlProvider {
 			result = preparedStatement.executeUpdate();
 		} catch (SQLException e1) {
 			if (e1.getSQLState().equals("23505")) {
-				/*System.out.println("DUPLICATE_KEY:" + e.getURL() + " in "
-						+ job.getName());*/
+				/*
+				 * System.out.println("DUPLICATE_KEY:" + e.getURL() + " in " +
+				 * job.getName());
+				 */
 			} else {
 				e1.printStackTrace();
 			}

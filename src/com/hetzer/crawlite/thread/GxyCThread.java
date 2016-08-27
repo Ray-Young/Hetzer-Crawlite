@@ -1,9 +1,7 @@
 package com.hetzer.crawlite.thread;
 
 import java.util.Iterator;
-import java.util.Random;
 
-import com.hetzer.crawlite.Crawlite;
 import com.hetzer.crawlite.datamodel.CrawlableURL;
 import com.hetzer.crawlite.framework.CThread;
 import com.hetzer.crawlite.framework.ProcesserChain;
@@ -103,16 +101,15 @@ public class GxyCThread extends Thread implements CThread {
 			if (current.getURL() == null) {
 				try {
 					sleep(sleepTime);
-					sleepTime <<=1;
+					sleepTime <<= 1;
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			} else {
 				sleepTime = SLEEP_TIME;
-				System.out.println(current.getURL() + " " + crawlJob.getName()
-						+ " " + threadname);
-				
+				System.out.println(current.getURL() + " " + crawlJob.getName() + " " + threadname);
+
 				process();
 
 				current = null;
