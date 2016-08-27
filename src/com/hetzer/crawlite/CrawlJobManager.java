@@ -19,19 +19,17 @@ import com.hetzer.crawlite.job.CrawlJob;
 import com.hetzer.crawlite.job.CrawlJobFactory;
 import com.hetzer.crawlite.mock.MockProcessor;
 import com.hetzer.crawlite.processers.CSSExtractr;
+import com.hetzer.crawlite.processers.CSSFetcher;
 import com.hetzer.crawlite.processers.CSSWriter;
 import com.hetzer.crawlite.processers.HTMLExtractor;
-import com.hetzer.crawlite.processers.CSSFetcher;
-import com.hetzer.crawlite.processers.CSSWriter;
+import com.hetzer.crawlite.processers.HTMLFetcher;
 import com.hetzer.crawlite.processers.HTMLWriter;
 import com.hetzer.crawlite.processers.IMGExtractor;
-import com.hetzer.crawlite.processers.ImageWriter;
 import com.hetzer.crawlite.processers.ImageFetcher;
+import com.hetzer.crawlite.processers.ImageWriter;
 import com.hetzer.crawlite.processers.JavaScriptExtractor;
-import com.hetzer.crawlite.processers.JavaScriptWriter;
-import com.hetzer.crawlite.processers.CSSFetcher;
-import com.hetzer.crawlite.processers.HTMLFetcher;
 import com.hetzer.crawlite.processers.JavaScriptFetcher;
+import com.hetzer.crawlite.processers.JavaScriptWriter;
 import com.hetzer.crawlite.thread.GxyCThreadPool;
 
 /**
@@ -64,10 +62,8 @@ public class CrawlJobManager {
 		try {
 			constructor = rClazz.getConstructor(String.class);
 		} catch (NoSuchMethodException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (SecurityException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -94,6 +90,7 @@ public class CrawlJobManager {
 
 		map.put("RetryTimes", 3);
 		List<Class<? extends Processor>> list = new ArrayList<Class<? extends Processor>>();
+		// Set What you want to extract
 		list.add(MockProcessor.class);
 		list.add(HTMLFetcher.class);
 		list.add(HTMLWriter.class);
@@ -101,19 +98,21 @@ public class CrawlJobManager {
 		list.add(ImageFetcher.class);
 		list.add(ImageWriter.class);
 
-		// list.add(CSSFetcher.class);
-		// list.add(CSSWriter.class);
+		list.add(CSSFetcher.class);
+		list.add(CSSWriter.class);
 
-		// list.add(JavaScriptFetcher.class);
-		// list.add(JavaScriptWriter.class);
+		list.add(JavaScriptFetcher.class);
+		list.add(JavaScriptWriter.class);
 
 		list.add(HTMLExtractor.class);
-		// list.add(CSSExtractr.class);
-		// list.add(JavaScriptExtractor.class);
+		list.add(CSSExtractr.class);
+		list.add(JavaScriptExtractor.class);
+
 		list.add(IMGExtractor.class);
 		map.put("processorList", list);
 		CrawlJob job = makeNewJob(map);
 		putJob(job.getName(), job);
+		// Set the Url of the target address
 		job.setSeeds(new String[] { "http://ent.163.com/special/dyjuzhaohuiz/" });
 		return job;
 	}
@@ -137,7 +136,7 @@ public class CrawlJobManager {
 				loadJob(ajobDir);
 			}
 		} else {
-			// throw new IllegalStateException("jobDir is not a directory");
+			throw new IllegalStateException("jobDir is not a directory");
 		}
 
 		// jobMap.put("test", new CrawlJobFactory().makeJob(this));

@@ -9,7 +9,7 @@ public class Resource implements CrawlableURL {
 	private Map<String, String> stringMap;
 	private String url;
 	private int depth = 0;
-	public String cookie=null;
+	public String cookie = null;
 
 	public Resource(String url) {
 		this.url = url;
@@ -89,6 +89,5 @@ public class Resource implements CrawlableURL {
 	public void setCookie(String cookie) {
 		this.cookie = cookie;
 	}
-	
-	
+
 }

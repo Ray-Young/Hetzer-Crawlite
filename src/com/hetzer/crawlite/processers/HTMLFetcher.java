@@ -19,11 +19,9 @@ public class HTMLFetcher extends AbstractFetcher {
 			if (source.getCookie() != null) {
 				// String s =
 				// "http://user.goodjobs.cn/dispatcher.php/module/Resume/action/Preview";
-				// ���´�һ������
 				try {
 					URL url = new URL(source.getURL());
 					HttpURLConnection resumeConnection = (HttpURLConnection) url.openConnection();
-					// ����cookie��Ϣ��ȥ���Ա����Լ�����ݣ�����ᱻ��Ϊû��Ȩ��
 					resumeConnection.setRequestProperty("Cookie", source.getCookie());
 
 					resumeConnection.connect();
