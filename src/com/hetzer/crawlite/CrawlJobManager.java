@@ -113,7 +113,9 @@ public class CrawlJobManager {
 		CrawlJob job = makeNewJob(map);
 		putJob(job.getName(), job);
 		// Set the Url of the target address
-		job.setSeeds(new String[] { "http://ent.163.com/special/dyjuzhaohuiz/" });
+		// job.setSeeds(new String[] {
+		// "http://ent.163.com/special/dyjuzhaohuiz/" });
+		job.setSeeds(new String[] { "https://www.youtube.com/" });
 		return job;
 	}
 
